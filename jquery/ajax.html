@@ -42,6 +42,7 @@
         <th>ID</th> -->
         <th>TITLE</th>
         <th>BODY</th>
+        <th>delete</th>
       </tr>
     </table>
 
@@ -53,10 +54,16 @@
             olddata += "<tr>";
             olddata += "<td>" + value.title + "</td>";
             olddata += "<td>" + value.body + "</td>";
+            olddata +=
+              "<td>" +
+              `<button type='button' class= 'delete' id='${value.id}'>delete!</button>` +
+              "</td>";
+
             olddata += "</tr>";
           });
           $("#myTable").append(olddata);
         });
+
         $("#form").submit(function (e) {
           e.preventDefault();
           let data = {
@@ -73,11 +80,26 @@
               newdata += "<tr>";
               newdata += "<td>" + response.title + "</td>";
               newdata += "<td>" + response.body + "</td>";
+              newdata +=
+                "<td>" +
+                "<button type='button' class = 'delete'>delete!</button>" +
+                "</td>";
               newdata += "</tr>";
               $("table").append(newdata);
             },
           });
           $("#form").trigger("reset");
+        });
+      });
+      $(document).on("click", ".delete", function () {
+        let dal = $(this).attr("id");
+        let newDal = $(this).closest("tr");
+        $.ajax({
+          url: `https://jsonplaceholder.typicode.com/posts/${dal}`,
+          type: "DELETE",
+          success: function () {
+            newDal.remove();
+          },
         });
       });
     </script>
