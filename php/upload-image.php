@@ -10,6 +10,7 @@
     </form>
 
     <?php
+    // print_r($_FILES);
     $target_dir = "upload/";
     $target_file = $target_dir . basename($_FILES["Upload"]["name"]);
     $uploadOk = 1;
