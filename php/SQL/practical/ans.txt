@@ -84,7 +84,9 @@
 
 44.SELECT * FROM `customers` WHERE state = 'CA' OR state = 'TX'
 
-45.
+45.SELECT order_id, customer_id, order_date,total 
+FROM orders 
+WHERE order_date >= '2022-01-01' AND total > 20;
 
 46.SELECT * FROM products WHERE inventory < 10
 
