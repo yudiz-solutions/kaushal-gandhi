@@ -9,27 +9,78 @@
 </head>
 
 <body>
-    <form action="form.php" method="post">
+    <?php
+    include "config.php";
+
+    if (isset($_POST['submit'])) {
+        $First_name = $_POST['First_name'];
+        $Last_name = $_POST['Last_name'];
+        $User_name = $_POST['User_name'];
+        $Email = $_POST['Email'];
+        $Password = $_POST['Password'];
+        $Gender = $_POST['Gender'];
+        $Country = $_POST['Country'];
+        $State = $_POST['State'];
+        $City = $_POST['City'];
+        $Bio = $_POST['Bio'];
+
+
+        // $Profile = $_FILES['file']['Profile'];
+        // $fileTempName = $_FILES['file']['tmp_name'];
+        // $file_store = "userprofile/" . $ Profile;
+
+        $ASM = $_POST['Active_social_media'];
+        $soc = implode(',', $ASM);
+
+        // $ASM = $_POST['Active_social_media'];
+        // $Active_social_media = "";
+        // foreach ($ASM as $temp) {
+        //     $Active_social_media .= $temp;
+        // }
+
+
+
+        // $Isql = "INSERT INTO `form`(`First_name`, `Last_name`, `User_name`, `Email`, `Password`, `Gender`, `Country`, `State`, `City`, `Bio`, `Profile`, `Active_social_media`) VALUES ('$First_name','$Last_name','$User_name','$Email','$Password','$Gender','$Country','$State','$City','$Bio','$Profile','$soc')";
+        $Isql = "INSERT INTO `form`(`First_name`, `Last_name`, `User_name`, `Email`, `Password`, `Gender`, `Country`, `State`, `City`, `Bio`, `Active_social_media`) VALUES ('$First_name','$Last_name','$User_name','$Email','$Password','$Gender','$Country','$State','$City','$Bio','$soc')";
+
+        $result = mysqli_query($conn, $Isql);
+
+        // if (move_uploaded_file($fileTempName, $file_store)) {
+        //     header('location: form.php');
+        // }
+
+        if ($result) {
+            echo "<script>
+      alert('data inserted successfully')</script> ";
+        } else {
+            // die(mysqli_error($conn));
+            echo "<script>
+      alert('Something Wrong Went.')
+  </script>";
+        }
+    }
+    ?>
+    <form action="form.php" method="post" enctype="multipart/form-data">
         <div>
             First-Name:-
-            <input type="text" placeholder="Enter your Firstname" name="First_name">
+            <input type="text" placeholder="Enter your Firstname" name="First_name" required>
         </div>
         <div>
             Last-name:-
-            <input type="text" placeholder="Enter your Lastname" name="Last_name">
+            <input type="text" placeholder="Enter your Lastname" name="Last_name" required>
 
         </div>
         <div>
             User-name:-
-            <input type="text" placeholder="Enter your Username" name="User_name">
+            <input type="text" placeholder="Enter your Username" name="User_name" required>
         </div>
         <div>
             Email:-
-            <input type="text" placeholder="Enter your Email" name="Email">
+            <input type="email" placeholder="Enter your Email" name="Email" required>
         </div>
         <div>
             Password:-
-            <input type="text" placeholder="Enter your Password" name="Password">
+            <input type="password" placeholder="Enter your Password" name="Password" required>
         </div>
         <div>
             Gender:-
@@ -38,7 +89,7 @@
         </div>
         <div>
             <label for="">Country:-</label>
-            <select name="Country" id="Country">
+            <select name="Country" id="Country" required>
                 <option value="">Select Country</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -288,7 +339,7 @@
         </div>
         <div>
             <label for="">State:-</label>
-            <select name="State" id="State">
+            <select name="State" id="State" required>
                 <option value="">Select State</option>
 
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -331,7 +382,7 @@
         </div>
         <div>
             <label for="">City:-</label>
-            <select name="City" id="City">
+            <select name="City" id="City" required>
                 <option value="">Select City</option>
                 <option value="Abrama">Abrama</option>
                 <option value="Adalaj">Adalaj</option>
@@ -554,56 +605,30 @@
         </div>
         <div>
             <label for="">Bio:-</label>
-            <textarea name="Bio" id="" cols="30" rows="10"></textarea>
+            <textarea name="Bio" id="" cols="30" rows="10" required></textarea>
         </div>
         <div>
             <label for="">Profile:-</label>
-            <input type="file" name="Profile">
+            <input type="file" name="Profile" required>
         </div>
         <div>
+            <?php
+
+            ?>
             <label for="">Active social media account:-</label>
-            Instagram <input type="Checkbox" name="Active_social_media" value="Instagram">
-            Twitter <input type="Checkbox" name="Active_social_media" value="Twitter">
-            Facebook <input type="Checkbox" name="Active_social_media" value="Facebook">
-            Whatsapp <input type="Checkbox" name="Active_social_media" value="Whatsapp">
-            Linkedin <input type="Checkbox" name="Active_social_media" value="Linkedin">
+            Instagram <input type="Checkbox" name="Active_social_media[]" value="Instagram">
+            Twitter <input type="Checkbox" name="Active_social_media[]" value="Twitter">
+            Facebook <input type="Checkbox" name="Active_social_media[]" value="Facebook">
+            Whatsapp <input type="Checkbox" name="Active_social_media[]" value="Whatsapp">
+            Linkedin <input type="Checkbox" name="Active_social_media[]" value="Linkedin">
 
         </div>
         <input type="submit" value="submit" name="submit">
+
+        <button><a href="view.php">View </a></button>
     </form>
 
-    <?php
-    include "config.php";
-    if (isset($_POST['submit'])) {
-        $First_name = $_POST['First_name'];
-        $Last_name = $_POST['Last_name'];
-        $User_name = $_POST['User_name'];
-        $Email = $_POST['Email'];
-        $Password = $_POST['Password'];
-        $Gender = $_POST['Gender'];
-        $Country = $_POST['Country'];
-        $State = $_POST['State'];
-        $City = $_POST['City'];
-        $Bio = $_POST['Bio'];
-        $Profile = $_POST['Profile'];
-        $Active_social_media = $_POST['Active_social_media'];
 
-
-
-        $Isql = "INSERT INTO `form`(`First_name`, `Last_name`, `User_name`, `Email`, `Password`, `Gender`, `Country`, `State`, `City`, `Bio`, `Profile`, `Active_social_media`) VALUES ('[$First_name]','[$Last_name]','[$User_name]','[$Email]','[$Password]','[$Gender]','[$Country]','[$State]','[$City]','[$Bio]','[$Profile]','[$Active_social_media]')";
-
-        $result = mysqli_query($conn, $Isql);
-        if ($result) {
-            echo "<script>
-      alert('data inserted successfully')</script> ";
-        } else {
-            die(mysqli_error($conn));
-            echo "<script>
-      alert('Something Wrong Went.')
-  </script>";
-        }
-    }
-    ?>
 </body>
 
 </html>
