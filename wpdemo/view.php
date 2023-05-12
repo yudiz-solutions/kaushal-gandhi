@@ -1,3 +1,14 @@
+<?php
+
+include 'config.php';
+session_start();
+// error_reporting(0);
+
+if (!isset($_SESSION['UserName'])) {
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,10 +72,12 @@
                 <td><button name="Delete" onclick="window.location.href='delete.php?id=<?php echo $row['id']; ?>'">Delete</button></td>
                 <td><button name="update" onclick="window.location.href='update.php?id=<?php echo $row['id']; ?>'">Update</button></td>
             </tr>
+
         <?php
         }
         ?>
     </table>
+    <button onclick="window.location.href='logout.php'">Logout</button>
 
 </body>
 

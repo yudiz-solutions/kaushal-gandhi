@@ -76,6 +76,7 @@
         <div class="button text-center mb-3">
             <button type="submit" class=" btn btn-primary" class="form-control" name="submit">Submit</button>
         </div>
+        <p>have an account? <a href="login.php">Login Here</a>.</p></br>
     </form>
 
 </body>

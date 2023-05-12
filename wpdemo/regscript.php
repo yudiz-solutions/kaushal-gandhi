@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $Password = $_POST['Password'];
     $ConfirmPassword = $_POST['ConfirmPassword'];
     $DOB = $_POST['DOB'];
-    $Hobby = $_POST['Hobby'];
+    // $Hobby = $_POST['Hobby'];
     $Hobby = $_POST['Hobby'];
     $hobby = implode(',', $Hobby);
     $Gender = $_POST['Gender'];
@@ -17,6 +17,8 @@ if (isset($_POST['submit'])) {
     $ProfileImage = $_FILES["ProfileImage"]["name"];
     $tempimg = $_FILES["ProfileImage"]["tmp_name"];
     $folder = "./image/" . $ProfileImage;
+
+
 
 
 
