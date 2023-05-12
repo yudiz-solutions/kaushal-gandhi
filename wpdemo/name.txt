@@ -1,0 +1,19 @@
+data base name :- wpdemo
+
+
+field name 
+
+
+id
+FirstName
+LastName
+UserName
+Email
+Password
+ConfirmPassword
+DOB
+Hobby
+Gender
+Country 
+Message
+ProfileImage
