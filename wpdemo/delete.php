@@ -1,5 +1,12 @@
 <?php
-include "config.php";
+include 'config.php';
+session_start();
+// error_reporting(0);
+
+if (!isset($_SESSION['UserName'])) {
+    header("Location: login.php");
+}
+// include "config.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

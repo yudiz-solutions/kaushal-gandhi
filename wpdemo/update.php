@@ -1,7 +1,16 @@
 <!------------------ update script ---------------->
+
 <?php
 
-include "config.php";
+// include "config.php";
+include 'config.php';
+session_start();
+// error_reporting(0);
+
+if (!isset($_SESSION['UserName'])) {
+    header("Location: login.php");
+}
+
 
 if (isset($_POST["update"])) {
     $id = $_POST['id'];
@@ -29,6 +38,7 @@ if (isset($_POST["update"])) {
 
     if ($result == TRUE) {
         echo "<script>alert('Record updated successfully.')</script>";
+        header("Location: view.php");
     } else {
         echo "Error-" . $sql . "<br>" . $conn->error;
     }
