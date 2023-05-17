@@ -4,44 +4,85 @@
 
 // include "config.php";
 include 'config.php';
+$response = array();
 session_start();
 // error_reporting(0);
 
 if (!isset($_SESSION['UserName'])) {
-    header("Location: login.php");
+    header("Location: index.php");
 }
 
 
 if (isset($_POST["update"])) {
     $id = $_POST['id'];
-    $FirstName = $_POST['FirstName'];
-    $LastName = $_POST['LastName'];
-    $UserName = $_POST['UserName'];
-    $Email = $_POST['Email'];
-    $Password = $_POST['Password'];
-    $ConfirmPassword = $_POST['ConfirmPassword'];
-    $DOB = $_POST['DOB'];
+    $FirstName = isset($_POST['FirstName']) ? $_POST['FirstName'] : '';
+    $LastName = isset($_POST['LastName']) ? $_POST['LastName'] : '';
+    $UserName = isset($_POST['UserName']) ? $_POST['UserName'] : '';
+    $Email = isset($_POST['Email']) ? $_POST['Email'] : '';
+    $Password = isset($_POST['Password']) ? $_POST['Password'] : '';
+    $ConfirmPassword = isset($_POST['ConfirmPassword']) ? $_POST['ConfirmPassword'] : '';
+    $DOB = isset($_POST['DOB']) ? $_POST['DOB'] : '';
     // $Hobby = $_POST['Hobby'];
-    $Hobby = $_POST['Hobby'];
+    $Hobby = isset($_POST['Hobby']) ? $_POST['Hobby']  : array();
     $hobby = implode(',', $Hobby);
-    $Gender = $_POST['Gender'];
-    $Country = $_POST['Country'];
-    $Message = $_POST['Message'];
-    $ProfileImage = $_FILES["ProfileImage"]["name"];
-    $tempimg = $_FILES["ProfileImage"]["tmp_name"];
+    $Gender = isset($_POST['Gender']) ? $_POST['Gender'] : '';
+    $Country = isset($_POST['Country']) ? $_POST['Country'] : '';
+    $Message = isset($_POST['Message']) ? $_POST['Message'] : '';
+    $ProfileImage = isset($_FILES["ProfileImage"]["name"]) ? $_FILES["ProfileImage"]["name"] : '';
+    $tempimg = isset($_FILES["ProfileImage"]["tmp_name"]) ? $_FILES["ProfileImage"]["tmp_name"] : '';
     $folder = "./image/" . $ProfileImage;
 
-
-    $sql = "UPDATE `wpdemo` SET `FirstName`='$FirstName',`LastName`='$LastName',`UserName`='$UserName',`Email`='$Email',`Password`='$Password',`ConfirmPassword`='$ConfirmPassword',`DOB`='$DOB',`Hobby`='$hobby',`Gender`='$Gender',`Country`='$Country',`Message`='$Message',`ProfileImage`='$folder' WHERE `id`='$id'";
-    $result = $conn->query($sql);
-    move_uploaded_file($tempimg, $folder);
-
-    if ($result == TRUE) {
-        echo "<script>alert('Record updated successfully.')</script>";
-        header("Location: view.php");
+    if (!empty($_FILES["ProfileImage"]["tmp_name"])) {
+        move_uploaded_file($tempimg, $folder);
     } else {
-        echo "Error-" . $sql . "<br>" . $conn->error;
+        $folder = isset($_POST['hidden_file']) ? $_POST['hidden_file'] : '';
     }
+    $has_error = false;
+    if (empty($FirstName)) {
+        $response['FirstName'] = 'Pleaase enter first name';
+        $has_error = true;
+    }
+    if (empty($LastName)) {
+        $response['LastName'] = 'Pleaase enter last  name';
+        $has_error = true;
+    }
+
+    if (empty($UserName)) {
+        $response['UserName'] = 'Pleaase enter username';
+        $has_error = true;
+    }
+
+    if (empty($Password)) {
+        $response['Password'] = 'Ple ENTER PAsass';
+        $has_error = true;
+    }
+
+    if (empty($ConfirmPassword)) {
+        $response['ConfirmPassword'] = 'Ple confirm ENTER PAsass';
+        $has_error = true;
+    }
+
+    if ($Password != $ConfirmPassword) {
+        $response['confirm_pass'] = 'Password and confirm password doent matech';
+        $has_error = true;
+    }
+    if (!$has_error) {
+
+        $sql = "UPDATE `wpdemo` SET `FirstName`='$FirstName',`LastName`='$LastName',`UserName`='$UserName',`Email`='$Email',`Password`='$Password',`ConfirmPassword`='$ConfirmPassword',`DOB`='$DOB',`Hobby`='$hobby',`Gender`='$Gender',`Country`='$Country',`Message`='$Message',`ProfileImage`='$folder' WHERE `id`='$id'";
+        $result = $conn->query($sql);
+        $response['status'] = true;
+        $response['msg'][] = 'Data inserted successfully';
+
+
+        if ($result == TRUE) {
+            echo "<script>alert('Record updated successfully.')</script>";
+            header("Location: view.php");
+        } else {
+            echo "Error-" . $sql . "<br>" . $conn->error;
+        }
+    }
+    // echo $response;
+    // die;
 }
 ?>
 <!DOCTYPE html>
@@ -98,32 +139,34 @@ if (isset($_POST["update"])) {
             <div class="mb-3">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <label>FirstName</label>
-                <input type="text" class="form-control" name="FirstName" value="<?php echo $FirstName; ?>">
+                <input type="text" class="form-control" name="FirstName" value="<?php echo isset($FirstName) ? $FirstName : ''; ?>">
             </div>
             <div class="mb-3">
                 <label>LastName</label>
-                <input type="text" class="form-control" name="LastName" value="<?php echo $LastName; ?>">
+                <input type="text" class="form-control" name="LastName" value="<?php echo isset($LastName) ? $LastName : ''; ?>">
+                <?php echo isset($response['LastName']) ? $response['LastName'] : '' ?>
             </div>
             <div class=" mb-3">
                 <label>UserName</label>
-                <input type="text" class="form-control" name="UserName" value="<?php echo $UserName; ?>">
+                <input type="text" class="form-control" name="UserName" value="<?php echo isset($UserName) ? $UserName : ''; ?>">
+                <?php echo isset($response['UserName']) ? $response['UserName'] : '' ?>
             </div>
             <div class="mb-3">
                 <label>Email</label>
-                <input type="text" class="form-control" name="Email" value="<?php echo $Email; ?>">
+                <input type="text" class="form-control" name="Email" value="<?php echo isset($Email) ? $Email : ''; ?>">
             </div>
             <div class="mb-3">
                 <label>Password</label>
-                <input type="Password" class="form-control" name="Password" value="<?php echo $Password; ?>">
+                <input type="Password" class="form-control" name="Password" value="<?php echo isset($Password) ? $Password : ''; ?>">
             </div>
             <div class="mb-3">
                 <label>ConfirmPassword</label>
-                <input type="Password" class="form-control" name="ConfirmPassword" value="<?php echo $ConfirmPassword; ?>">
+                <input type="Password" class="form-control" name="ConfirmPassword" value="<?php echo isset($ConfirmPassword) ? $ConfirmPassword : ''; ?>">
             </div>
 
             <div class="mb-3">
                 <label>DOB</label>
-                <input type="date" class="form-control" name="DOB" value="<?php echo $DOB; ?>">
+                <input type="date" class="form-control" name="DOB" value="<?php echo isset($DOB) ? $DOB : ''; ?>">
             </div>
             <div class="mb-3">
 
@@ -171,11 +214,12 @@ if (isset($_POST["update"])) {
             </div>
             <div class="mb-3">
                 <label for="">Message</label>
-                <textarea name="Message" id="" cols="30" rows="10" class="form-control" required><?php echo $Message; ?></textarea>
+                <textarea name="Message" id="" cols="30" rows="10" class="form-control" required><?php echo isset($Message) ? $Message : ''; ?></textarea>
             </div>
             <div class="mb-3">
                 <label for="">ProfileImage</label>
-                <input type="file" name="ProfileImage" class="form-control"><?php echo $ProfileImage; ?>
+                <input type="file" name="ProfileImage" class="form-control">
+                <input type="hidden" name="hidden_file" value="<?php echo $ProfileImage; ?>">
             </div>
             <div class="button text-center mb-3">
                 <button type="submit" class=" btn btn-primary" class="form-control" name="update">Submit</button>

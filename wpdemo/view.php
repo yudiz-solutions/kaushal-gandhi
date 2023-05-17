@@ -5,7 +5,7 @@ session_start();
 // error_reporting(0);
 
 if (!isset($_SESSION['UserName'])) {
-    header("Location: login.php");
+    header("Location: index.php");
 }
 
 ?>
@@ -37,7 +37,9 @@ if (!isset($_SESSION['UserName'])) {
     $viewsql = "SELECT * FROM `wpdemo`";
     $result = mysqli_query($conn, $viewsql);
     ?>
+
     <table>
+
         <thead>
             <tr>
                 <th>ID</th>
@@ -58,7 +60,9 @@ if (!isset($_SESSION['UserName'])) {
         <!----------------- view script  -------------->
         <?php
         while ($row = $result->fetch_assoc()) {
-        ?><tr>
+        ?>
+
+            <tr>
                 <td><?= $row["id"] ?></td>
                 <td><?= $row["FirstName"] ?></td>
                 <td><?= $row["LastName"] ?></td>
@@ -78,6 +82,7 @@ if (!isset($_SESSION['UserName'])) {
         }
         ?>
     </table>
+    <button name="search" onclick="window.location.href='search.php'">search</button>
     <button onclick="window.location.href='logout.php'">Logout</button>
 
 </body>

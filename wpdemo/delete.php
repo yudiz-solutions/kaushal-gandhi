@@ -4,7 +4,7 @@ session_start();
 // error_reporting(0);
 
 if (!isset($_SESSION['UserName'])) {
-    header("Location: login.php");
+    header("Location: index.php");
 }
 // include "config.php";
 

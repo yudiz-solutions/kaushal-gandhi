@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $Password = ($_POST['Password']);
     // $ConfirmPassword = ($_POST['ConfirmPassword']);
 
-    $sql = "SELECT * FROM wpdemo WHERE Email='$Email' OR UserName='$UserName'   AND Password='$Password' ";
+    $sql = "SELECT * FROM wpdemo WHERE Email='$Email'   AND Password='$Password' ";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
