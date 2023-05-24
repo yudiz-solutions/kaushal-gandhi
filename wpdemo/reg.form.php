@@ -18,11 +18,17 @@
         </div>
         <div class="mb-3">
             <label>FirstName</label>
-            <input type="text" class="form-control" name="FirstName">
+            <input type="text" class="form-control" name="FirstName" id="firstname">
+            <h5 id="firstcheck" style="color: red; display:none">
+                **Firstname is missing
+            </h5>
         </div>
         <div class="mb-3">
             <label>LastName</label>
-            <input type="text" class="form-control" name="LastName">
+            <input type="text" class="form-control" name="LastName" id="lastname">
+            <h5 id="lastcheck" style="color: red; display:none">
+                **Lastname is missing
+            </h5>
         </div>
         <div class="mb-3">
             <label>UserName</label>
@@ -35,7 +41,7 @@
             <label>Email</label>
             <input type="text" class="form-control" name="Email" id="email">
             <small id="emailvalid" class="form-text 
-                text-muted invalid-feedback" style="display:none">
+                text-muted invalid-feedback">
                 Your email must be a valid email
             </small>
         </div>
@@ -100,6 +106,42 @@
 <script>
     $(document).ready(function() {
 
+        // Validate firstname
+        $("#firstcheck").hide();
+        let firstnameError = true;
+        $("#firstname").keyup(function() {
+            validateFirstname();
+        });
+
+        function validateFirstname() {
+            let firstnameValue = $("#firstname").val();
+            if (firstnameValue.length == "") {
+                $("#firstname").addClass('has-error');
+                $("#firstcheck").show();
+                // usernameError = false;
+                //return false;
+            } else {
+                $("#firstcheck").hide();
+            }
+        }
+        // Validate Lastname
+        $("#lastcheck").hide();
+        let lastnameError = true;
+        $("#lastname").keyup(function() {
+            validatelastname();
+        });
+
+        function validatelastname() {
+            let lastnameValue = $("#lastname").val();
+            if (lastnameValue.length == "") {
+                $("#lastname").addClass('has-error');
+                $("#lastcheck").show();
+                // usernameError = false;
+                //return false;
+            } else {
+                $("#lastcheck").hide();
+            }
+        }
         // Validate Username
         $("#usercheck").hide();
         let usernameError = true;
@@ -109,16 +151,13 @@
 
         function validateUsername() {
             let usernameValue = $("#usernames").val();
-
             if (usernameValue.length == "") {
                 $("#usernames").addClass('has-error');
                 $("#usercheck").show();
                 // usernameError = false;
                 //return false;
             } else if (usernameValue.length < 3 || usernameValue.length > 10) {
-
                 $("#usernames").addClass('has-error');
-
                 $("#usercheck").show();
                 $("#usercheck").html("**length of username must be between 3 and 10");
                 //usernameError = false;
@@ -127,7 +166,6 @@
                 $("#usercheck").hide();
             }
         }
-
         // Validate Email
         const email = document.getElementById("email");
         email.addEventListener("blur", () => {
@@ -155,13 +193,10 @@
                 //  passwordError = false;                
                 $("#password").addClass('has-error');
                 //return false;
-
             }
             if (passwordValue.length < 3 || passwordValue.length > 10) {
                 $("#passcheck").show();
-                $("#passcheck").html(
-                    "**length of your password must be between 3 and 10"
-                );
+                $("#passcheck").html("**length of your password must be between 3 and 10");
                 $("#passcheck").css("color", "red");
                 //passwordError = false;
                 $("#password").addClass('has-error');
@@ -193,23 +228,19 @@
                 $("#conpasscheck").hide();
             }
         }
-
-
-
         $(document).on('submit', '#form', function(e) {
-
+            $("#lastname").removeClass('has-error');
+            $("#firstname").removeClass('has-error');
             $("#conpassword").removeClass('has-error');
             $("#password").removeClass('has-error');
             $("#usernames").removeClass('has-error');
+            validatelastname();
+            validateFirstname();
             validateUsername();
             validatePassword();
-
             validateConfirmPassword();
             e.preventDefault();
-
             var data = new FormData(this);
-
-
             if ($('.has-error').length == 0) {
                 //if (passwordError == false && confirmPasswordError == false && usernameError == false) {
                 $.ajax({
@@ -225,17 +256,13 @@
                         $.each(obj.msg, function(index, value) {
                             error += '<p>' + value + '</p>'
                         });
-
                         $("#error_messages").html(error)
                     },
                 });
                 $("#form").trigger("reset");
             }
-
             // $("#form").trigger("reset");
         });
-
-
     });
 </script>
 
