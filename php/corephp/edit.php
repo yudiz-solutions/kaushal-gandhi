@@ -594,6 +594,7 @@ $result = mysqli_query($conn, $sql);
                 </tr>
                 <tr>
                     <td>
+
                         <?php
 
                         $soci_ex = explode(",", $row['Active_social_media']);

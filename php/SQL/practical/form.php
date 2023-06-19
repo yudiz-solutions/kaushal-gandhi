@@ -27,6 +27,8 @@
         football:<input type="checkbox" name="hobbies" value="football">
         <br><br>
         <button name="submit">Submit</button>
+        <!-- <form action="view.php" method="post"></form> -->
+        <!-- <button name="view">view</button> -->
 
     </form>
 

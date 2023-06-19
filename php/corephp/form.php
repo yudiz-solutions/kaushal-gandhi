@@ -60,7 +60,7 @@
         }
     }
     ?>
-    <form action="form.php" method="post" enctype="multipart/form-data">
+    <form action="  p" method="post" enctype="multipart/form-data">
         <div>
             First-Name:-
             <input type="text" placeholder="Enter your Firstname" name="First_name" required>
