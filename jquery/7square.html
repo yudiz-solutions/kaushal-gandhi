@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <style>
@@ -22,11 +21,12 @@
       $(document).ready(function () {
         $("div").click(function (e) {
           //   console.log($(this));
+          e.stopPropagation();
           //   $(this).css("background-color", "red");
           $(this).parents("div").css("background-color", "green");
           $(this).css("background-color", "red");
-          $(this).find("*").css("background-color", "yellow");
-          e.stopPropagation();
+          $(this).children("div").css("background-color", "yellow");
+          // console.log(())
         });
       });
     </script>

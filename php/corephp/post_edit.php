@@ -1,9 +1,18 @@
 <?php
 
 include "config.php";
-$id = $_GET['update'];
+$id = $_GET['updatepost'];
 $sql = "SELECT * FROM form WHERE id = '$id'";
 $result = mysqli_query($conn, $sql);
+// print_r($result);
+// die;
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $r_id = $row['id'];
+        $r_caption = $row['caption'];
+        $r_hashtag = $row['hashtag'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +29,8 @@ $result = mysqli_query($conn, $sql);
         <tr>
             <td>
                 <label for="">caption:-</label>
-                <input type="hidden" name="eid" value="<?php echo $row['id']; ?>">
-                <textarea name="caption" id="" cols="30" rows="10" required> <?php echo $row['caption']; ?></textarea>
+                <input type="hidden" name="eid" value="<?php echo $r_id; ?>">
+                <textarea name="caption" id="" cols="30" rows="10" required> <?php echo $r_caption; ?></textarea>
 
             </td>
         </tr>

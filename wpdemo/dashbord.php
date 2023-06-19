@@ -1,3 +1,16 @@
+<?php
+
+// include "config.php";
+include 'config.php';
+// $response = array();
+session_start();
+// error_reporting(0);
+
+if (!isset($_SESSION['UserName'])) {
+    header("Location: index.php");
+}
+$username = $_SESSION['UserName'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +20,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -72,7 +84,14 @@
             </div>
             <br>
 
+            <div class="col-sm-9">
+                <div class="well">
+                    <h4></h4>
+                    <p>Welcome <?php echo $username ?></p>
+                    <p>(Not <?php echo $username ?> ?? )</p>
+                </div>
 
+            </div>
         </div>
     </div>
     </div>

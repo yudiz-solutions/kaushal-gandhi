@@ -51,6 +51,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             <th>phone.no</th>
             <th>hashtag</th>
             <th>DELETE</th>
+            <th>Update</th>
         </tr>
     </thead>
     <tbody>
@@ -60,9 +61,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         foreach ($data as $post_id => $row) {
 
             $num++;
-            $id = $row['id'];
-            echo $id;
-            die;
+            // $id = $row['id'];
+            // echo $id;
+            // die;
             $firstname = $row['firstname'];
             $lastname = $row['lastname'];
             $email = $row['email'];
@@ -84,8 +85,11 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <td><?php echo $number; ?></td>
                 <td><?php echo $hashtag; ?></td>
 
-                <td><button name="Delete"><a style="text-decoration:none; color: black" href="post_delete.php?id=<?php echo $id; ?>">Delete</a></button></td>
-
+                <td>
+                    <!-- <button name="Delete"><a style="text-decoration:none; color: black" href="post_delete.php?id=<?php echo $id; ?>">Delete</a></button> -->
+                    <a href="post_delete.php?id=<?php echo $post_id; ?>"><button>Delete</button></a>
+                </td>
+                <td><a href="post_edit.php?editid=<?php echo $post_id; ?>"><button>update</button></a></td>
             </tr>
         <?php
         }

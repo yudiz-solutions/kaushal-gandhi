@@ -1,3 +1,15 @@
+<?php
+include 'config.php';
+session_start();
+// error_reporting(0);
+
+if (!isset($_SESSION['UserName'])) {
+    header("Location: index.php");
+}
+?>
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +24,9 @@
 </head>
 
 <body>
+    <?php
+    include "header.php";
+    ?>
     <form id="form" class="container col-4 bg-dark text-light p-5" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <div id="error_messages"></div>
@@ -127,6 +142,7 @@
                     contentType: false,
                     data: data,
                     success: function(response) {
+
                         const obj = JSON.parse(response);
                         var error = '';
                         console.log(obj.msg)

@@ -56,28 +56,34 @@ if (isset($_POST['updatebtn'])) {
 
 <body>
     <?php
-    include "config.php";
+    // include "config.php";
 
     $viewpostsql = "SELECT * FROM `post`";
     $result = mysqli_query($conn, $viewpostsql);
+    // print_r($result);
+    // die;
     ?>
     <table>
         <thead>
             <tr>
-                <td>yourpost</td>
+                <!-- <td>yourpost</td> -->
+                <td>ID</td>
                 <td>caption</td>
                 <td>hashtag</td>
                 <td>Delete</td>
+                <td>Update</td>
             </tr>
         </thead>
         <?php
 
         // view script
         while ($row = $result->fetch_assoc()) {
+            // print_r($row);
+            // die;
         ?>
             <tr>
                 <td><?= $row["id"] ?></td>
-                <td><?= $row["post_img"] ?></td>
+
                 <td><?= $row["caption"] ?></td>
                 <td><?= $row["hashtag"] ?></td>
                 <td>
@@ -87,9 +93,10 @@ if (isset($_POST['updatebtn'])) {
                     </form>
                 </td>
                 <td>
-                    <form action="post_edit.php?update=<?php echo $row["id"]; ?>" method="post">
+                    <form action="post_edit.php?updatepost=<?php echo $row['id']; ?>" method="post">
 
-                        <input type="hidden" value="<?php echo $row['ID'] ?>" name="update">
+                        <!-- <input type="hidden" value="<?php //echo $row['id'] 
+                                                            ?>" name="update"> -->
                         <input type="submit" name="update" value="update">
 
 
