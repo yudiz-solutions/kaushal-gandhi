@@ -14,7 +14,7 @@ function wp_load_script()
     wp_register_style('practical2-slick-theme', get_template_directory_uri() . '/css/slick-theme.css');
     wp_enqueue_style('practical2-slick-theme');
 
-    wp_register_style('practical2-style', get_template_directory_uri() . '/css/style.css', array(), time());
+    wp_register_style('practical2-style', get_template_directory_uri() . '/style.css', array(), time());
     wp_enqueue_style('practical2-style');
 
 
@@ -70,10 +70,22 @@ function nav_menu()
     );
 
     register_nav_menus(array(
-        'primary-menu' =>  __('Top Menu', 'textdomain')
+        'primary-menu' =>  __('Top Menu', 'wrapp-project'),
+        'menu' => 'Menu 1'
+
     ));
+    /* Hook into the 'init' action so that the function
+* Containing our post type registration is not 
+* unnecessarily executed. 
+*/
 }
 add_action('after_setup_theme', 'nav_menu');
+
+function theme_support()
+{
+    add_theme_support('post-thumbnails');
+}
+add_action('after_setup_theme', 'theme_support');
 
 function cc_mime_types($mimes)
 {
@@ -83,12 +95,18 @@ function cc_mime_types($mimes)
 add_filter('upload_mimes', 'cc_mime_types');
 
 
+
+
+
+
+
+
 function wpdocs_theme_slug_widgets_init()
 {
     register_sidebar(array(
-        'name'          => __('Categories', 'textdomain'),
+        'name'          => __('Categories', 'wrapp-project'),
         'id'            => 'Categories',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'textdomain'),
+        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h3 class="widgettitle">',
@@ -96,9 +114,9 @@ function wpdocs_theme_slug_widgets_init()
     ));
 
     register_sidebar(array(
-        'name'          => __('Product', 'textdomain'),
+        'name'          => __('Product', 'wrapp-project'),
         'id'            => 'Product',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'textdomain'),
+        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h3 class="widgettitle">',
@@ -106,9 +124,9 @@ function wpdocs_theme_slug_widgets_init()
     ));
 
     register_sidebar(array(
-        'name'          => __('Solutions', 'textdomain'),
+        'name'          => __('Solutions', 'wrapp-project'),
         'id'            => 'Solutions',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'textdomain'),
+        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h3 class="widgettitle">',
@@ -117,9 +135,9 @@ function wpdocs_theme_slug_widgets_init()
 
 
     register_sidebar(array(
-        'name'          => __('Resources', 'textdomain'),
+        'name'          => __('Resources', 'wrapp-project'),
         'id'            => 'Resources',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'textdomain'),
+        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h3 class="widgettitle">',
@@ -127,9 +145,9 @@ function wpdocs_theme_slug_widgets_init()
     ));
 
     register_sidebar(array(
-        'name'          => __('Support', 'textdomain'),
+        'name'          => __('Support', 'wrapp-project'),
         'id'            => 'Support',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'textdomain'),
+        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h3 class="widgettitle">',
@@ -137,9 +155,9 @@ function wpdocs_theme_slug_widgets_init()
     ));
 
     register_sidebar(array(
-        'name'          => __('Company', 'textdomain'),
+        'name'          => __('Company', 'wrapp-project'),
         'id'            => 'Company',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'textdomain'),
+        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h3 class="widgettitle">',
@@ -155,29 +173,29 @@ function custom_post_type()
 
     // Set UI labels for Custom Post Type
     $labels = array(
-        'name'                => _x('stories', 'Post Type General Name', 'coustom-theam'),
-        'singular_name'       => _x('stories', 'Post Type Singular Name', 'coustom-theam'),
-        'menu_name'           => __('stories', 'coustom-theam'),
-        'parent_item_colon'   => __('Parent stories', 'coustom-theam'),
-        'all_items'           => __('All stories', 'coustom-theam'),
-        'view_item'           => __('View stories', 'coustom-theam'),
-        'add_new_item'        => __('Add New stories', 'coustom-theam'),
-        'add_new'             => __('Add New', 'coustom-theam'),
-        'edit_item'           => __('Edit stories', 'coustom-theam'),
-        'update_item'         => __('Update stories', 'coustom-theam'),
-        'search_items'        => __('Search stories', 'coustom-theam'),
-        'not_found'           => __('Not Found', 'coustom-theam'),
-        'not_found_in_trash'  => __('Not found in Trash', 'coustom-theam'),
+        'name'                => _x('stories', 'Post Type General Name', 'wrapp-project'),
+        'singular_name'       => _x('stories', 'Post Type Singular Name', 'wrapp-project'),
+        'menu_name'           => __('stories', 'wrapp-project'),
+        'parent_item_colon'   => __('Parent stories', 'wrapp-project'),
+        'all_items'           => __('All stories', 'wrapp-project'),
+        'view_item'           => __('View stories', 'wrapp-project'),
+        'add_new_item'        => __('Add New stories', 'wrapp-project'),
+        'add_new'             => __('Add New', 'wrapp-project'),
+        'edit_item'           => __('Edit stories', 'wrapp-project'),
+        'update_item'         => __('Update stories', 'wrapp-project'),
+        'search_items'        => __('Search stories', 'wrapp-project'),
+        'not_found'           => __('Not Found', 'wrapp-project'),
+        'not_found_in_trash'  => __('Not found in Trash', 'wrapp-project'),
     );
 
     // Set other options for Custom Post Type
 
     $args = array(
-        'label'               => __('stories', 'coustom-theam'),
-        'description'         => __('stories stories and reviews', 'coustom-theam'),
+        'label'               => __('stories', 'wrapp-project'),
+        'description'         => __('stories stories and reviews', 'wrapp-project'),
         'labels'              => $labels,
         // Features this CPT supports in Post Editor
-        'supports'            => array('title', 'editor',  'author', 'thumbnail',   'custom-fields',),
+        'supports'            => array('title', 'editor', 'excerpt',  'author', 'thumbnail',   'custom-fields',),
         // You can associate this CPT with a taxonomy or custom taxonomy. 
         'taxonomies'          => array('genres'),
         /* A hierarchical CPT is like Pages and can have
@@ -185,7 +203,7 @@ function custom_post_type()
         * is like Posts.
         */
         'hierarchical'        => false,
-        'public'              => false,
+        'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
         'show_in_nav_menus'   => true,
@@ -205,22 +223,22 @@ function custom_post_type()
 
 
     $labels = array(
-        'name'                       => _x('Category', 'taxonomy general name', 'textdomain'),
-        'singular_name'              => _x('Category', 'taxonomy singular name', 'textdomain'),
-        'search_items'               => __('Search Category', 'textdomain'),
-        'popular_items'              => __('Popular Category', 'textdomain'),
-        'all_items'                  => __('All Category', 'textdomain'),
+        'name'                       => _x('Category', 'taxonomy general name', 'wrapp-project'),
+        'singular_name'              => _x('Category', 'taxonomy singular name', 'wrapp-project'),
+        'search_items'               => __('Search Category', 'wrapp-project'),
+        'popular_items'              => __('Popular Category', 'wrapp-project'),
+        'all_items'                  => __('All Category', 'wrapp-project'),
         'parent_item'                => null,
         'parent_item_colon'          => null,
-        'edit_item'                  => __('Edit Writer', 'textdomain'),
-        'update_item'                => __('Update Writer', 'textdomain'),
-        'add_new_item'               => __('Add New Writer', 'textdomain'),
-        'new_item_name'              => __('New Writer Name', 'textdomain'),
-        'separate_items_with_commas' => __('Separate Category with commas', 'textdomain'),
-        'add_or_remove_items'        => __('Add or remove Category', 'textdomain'),
-        'choose_from_most_used'      => __('Choose from the most used Category', 'textdomain'),
-        'not_found'                  => __('No Category found.', 'textdomain'),
-        'menu_name'                  => __('Category', 'textdomain'),
+        'edit_item'                  => __('Edit Writer', 'wrapp-project'),
+        'update_item'                => __('Update Writer', 'wrapp-project'),
+        'add_new_item'               => __('Add New Writer', 'wrapp-project'),
+        'new_item_name'              => __('New Writer Name', 'wrapp-project'),
+        'separate_items_with_commas' => __('Separate Category with commas', 'wrapp-project'),
+        'add_or_remove_items'        => __('Add or remove Category', 'wrapp-project'),
+        'choose_from_most_used'      => __('Choose from the most used Category', 'wrapp-project'),
+        'not_found'                  => __('No Category found.', 'wrapp-project'),
+        'menu_name'                  => __('Category', 'wrapp-project'),
     );
 
     $args = array(
@@ -234,43 +252,7 @@ function custom_post_type()
     );
 
     register_taxonomy('stories-category', 'stories', $args);
-
-
-    $labels = array(
-        'name'                       => _x('Type', 'taxonomy general name', 'textdomain'),
-        'singular_name'              => _x('Type', 'taxonomy singular name', 'textdomain'),
-        'search_items'               => __('Search Type', 'textdomain'),
-        'popular_items'              => __('Popular Type', 'textdomain'),
-        'all_items'                  => __('All Type', 'textdomain'),
-        'parent_item'                => null,
-        'parent_item_colon'          => null,
-        'edit_item'                  => __('Edit Writer', 'textdomain'),
-        'update_item'                => __('Update Writer', 'textdomain'),
-        'add_new_item'               => __('Add New Writer', 'textdomain'),
-        'new_item_name'              => __('New Writer Name', 'textdomain'),
-        'separate_items_with_commas' => __('Separate Type with commas', 'textdomain'),
-        'add_or_remove_items'        => __('Add or remove Type', 'textdomain'),
-        'choose_from_most_used'      => __('Choose from the most used Type', 'textdomain'),
-        'not_found'                  => __('No Type found.', 'textdomain'),
-        'menu_name'                  => __('Type', 'textdomain'),
-    );
-
-    $args = array(
-        'hierarchical'          => true,
-        'labels'                => $labels,
-        'show_ui'               => true,
-        'show_admin_column'     => true,
-        'update_count_callback' => '_update_post_term_count',
-        'query_var'             => true,
-        'rewrite'               => array('slug' => 'stories-type'),
-    );
-
-    register_taxonomy('stories-type', 'stories', $args);
 }
-add_theme_support('post-thumbnails');
-/* Hook into the 'init' action so that the function
-* Containing our post type registration is not 
-* unnecessarily executed. 
-*/
+
 
 add_action('init', 'custom_post_type', 0);
