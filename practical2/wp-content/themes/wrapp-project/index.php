@@ -156,7 +156,7 @@ if (!empty($find_similar_section_starts)) {
 
             $args = array(
                 'post_type' => 'stories',
-                'post_category' => 'publish'
+                'post_status' => 'publish'
             );
 
             $stories_list = new WP_Query($args);

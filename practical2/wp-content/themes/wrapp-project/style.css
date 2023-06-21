@@ -207,7 +207,7 @@ ul{
     filter: contrast(10%);
 }
 .afternav-section .btn:after {
-    background: url('../images/right-sign.svg') no-repeat center center / cover;
+    background: url('./images/right-sign.svg') no-repeat center center / cover;
     content: "";
     height: 13px;
     width: 14px;
@@ -248,7 +248,7 @@ ul{
     object-position: center;
 }
 .afternav-section {
-    background: url('../images/banner-left.svg') no-repeat left 32% / 30%, url('../images/banner-right.svg') no-repeat right 30% / 53%;
+    background: url('./images/banner-left.svg') no-repeat left 32% / 30%, url('./images/banner-right.svg') no-repeat right 30% / 53%;
 }
 
 /* Content-box */
@@ -374,7 +374,7 @@ ul{
 }
 .inner-find-similar .row .text-content a:after {
     content: "";
-    background: url('../images/right-arrow.svg') no-repeat center center / cover;
+    background: url('./images/right-arrow.svg') no-repeat center center / cover;
     display: block;
     position: absolute;
     left: 140px;
@@ -509,7 +509,7 @@ ul{
     position: relative;
 }
 .inner-multi-images .no-limits-parent {
-    background: url(../images/multiple-images.svg) no-repeat right center / cover;
+    background: url(./images/multiple-images.svg) no-repeat right center / cover;
     min-height: 852px;
     padding: 0;
     
@@ -571,7 +571,7 @@ ul{
 }
 /* alternate chages */
 .brainstorm-now {
-    background: url('../images/brainstorm-footer.svg') no-repeat left center / contain, url('../images/iphones-footer.svg') no-repeat right center / contain, #4C1D95;
+    background: url('./images/brainstorm-footer.svg') no-repeat left center / contain, url('./images/iphones-footer.svg') no-repeat right center / contain, #4C1D95;
     /* margin-top: -160px; */
     z-index: 10;
     position: relative;
@@ -917,7 +917,7 @@ footer .container .row.footer-bottom p {
     }
    
     .afternav-section {
-        background: url('../images/banner-left.svg') no-repeat left 55% / 30%, url('../images/banner-right.svg') no-repeat right 60% / 53%;
+        background: url('./images/banner-left.svg') no-repeat left 55% / 30%, url('./images/banner-right.svg') no-repeat right 60% / 53%;
     }
     .inner-find-similar .row .text-content {
     
@@ -1217,7 +1217,7 @@ footer ul li {
 
 @media only screen and (max-width: 320px) {
     .afternav-section {
-        background: url('../images/banner-left.svg') no-repeat left 70% / 30%, url('../images/banner-right.svg') no-repeat right 75% / 53%;
+        background: url('./images/banner-left.svg') no-repeat left 70% / 30%, url('./images/banner-right.svg') no-repeat right 75% / 53%;
     } 
 
 }

@@ -106,62 +106,62 @@ function wpdocs_theme_slug_widgets_init()
     register_sidebar(array(
         'name'          => __('Categories', 'wrapp-project'),
         'id'            => 'Categories',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
-        'before_widget' => '<li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li>',
-        'before_title'  => '<h3 class="widgettitle">',
-        'after_title'   => '</h3>',
+        'description'   => __(''),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h2 class="nav-link active">',
+        'after_title'   => '</h2>',
     ));
 
     register_sidebar(array(
         'name'          => __('Product', 'wrapp-project'),
         'id'            => 'Product',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
-        'before_widget' => '<li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li>',
-        'before_title'  => '<h3 class="widgettitle">',
-        'after_title'   => '</h3>',
+        'description'   => __(''),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
     ));
 
     register_sidebar(array(
         'name'          => __('Solutions', 'wrapp-project'),
         'id'            => 'Solutions',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
-        'before_widget' => '<li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li>',
-        'before_title'  => '<h3 class="widgettitle">',
-        'after_title'   => '</h3>',
+        'description'   => __(''),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
     ));
 
 
     register_sidebar(array(
         'name'          => __('Resources', 'wrapp-project'),
         'id'            => 'Resources',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
-        'before_widget' => '<li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li>',
-        'before_title'  => '<h3 class="widgettitle">',
-        'after_title'   => '</h3>',
+        'description'   => __(''),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
     ));
 
     register_sidebar(array(
         'name'          => __('Support', 'wrapp-project'),
         'id'            => 'Support',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
-        'before_widget' => '<li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li>',
-        'before_title'  => '<h3 class="widgettitle">',
-        'after_title'   => '</h3>',
+        'description'   => __(''),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
     ));
 
     register_sidebar(array(
         'name'          => __('Company', 'wrapp-project'),
         'id'            => 'Company',
-        'description'   => __('Widgets in this area will be shown on all posts and pages.', 'wrapp-project'),
-        'before_widget' => '<li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li>',
-        'before_title'  => '<h3 class="widgettitle">',
-        'after_title'   => '</h3>',
+        'description'   => __(''),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
     ));
 }
 add_action('widgets_init', 'wpdocs_theme_slug_widgets_init');
@@ -197,7 +197,7 @@ function custom_post_type()
         // Features this CPT supports in Post Editor
         'supports'            => array('title', 'editor', 'excerpt',  'author', 'thumbnail',   'custom-fields',),
         // You can associate this CPT with a taxonomy or custom taxonomy. 
-        'taxonomies'          => array('genres'),
+        'taxonomies'          => array('wrapp-project'),
         /* A hierarchical CPT is like Pages and can have
         * Parent and child items. A non-hierarchical CPT
         * is like Posts.
@@ -223,8 +223,8 @@ function custom_post_type()
 
 
     $labels = array(
-        'name'                       => _x('Category', 'taxonomy general name', 'wrapp-project'),
-        'singular_name'              => _x('Category', 'taxonomy singular name', 'wrapp-project'),
+        'name'                       => __('Category', 'wrapp-project'),
+        'singular_name'              => __('Category', 'wrapp-project'),
         'search_items'               => __('Search Category', 'wrapp-project'),
         'popular_items'              => __('Popular Category', 'wrapp-project'),
         'all_items'                  => __('All Category', 'wrapp-project'),
