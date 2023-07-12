@@ -44,16 +44,7 @@ $packages = get_field('packages');
         </div>
     </section>
     <section class="assessment-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2><?php echo $packages['heading3']; ?></h2>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="<?php echo $packages['button']['url']; ?>" class="theme-btn white-btn"><?php echo $packages['button']['title']; ?></a>
-                </div>
-            </div>
-        </div>
+        <?php echo do_shortcode('[assessment_data]'); ?>
     </section>
 </main>
 <!--******************* Middle Section End ******************-->

@@ -24,18 +24,7 @@ $assessment_section = get_field('assessment_section');
 <main>
     <?php if (!empty($assessment_section)) { ?>
         <section class="assessment-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <?php if (isset($assessment_section['heading']) && !empty($assessment_section['heading'])) { ?>
-                            <h2><?php echo $assessment_section['heading']; ?></h2>
-                        <?php } ?>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <a href="<?php $assessment_section['button']['url']; ?>" class="theme-btn white-btn"><?php $assessment_section['button']['title']; ?></a>
-                    </div>
-                </div>
-            </div>
+            <?php echo do_shortcode('[assessment_data]'); ?>
         </section>
     <?php } ?>
 </main>

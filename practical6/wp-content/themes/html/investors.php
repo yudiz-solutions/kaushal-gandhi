@@ -19,16 +19,7 @@ $investors = ['investors'];
 <!--******************* Middle Section Start ******************-->
 <main>
     <section class="assessment-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2><?php echo $investors['heading_fot_assessment_section']; ?></h2>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="<?php echo $investors['button']['url']; ?>" class="theme-btn white-btn"><?php echo $investors['button']['title']; ?></a>
-                </div>
-            </div>
-        </div>
+        <?php echo do_shortcode('[assessment_data]'); ?>
     </section>
 </main>
 <!--******************* Middle Section End ******************-->

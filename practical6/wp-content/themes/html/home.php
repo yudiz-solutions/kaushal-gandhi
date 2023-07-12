@@ -141,16 +141,7 @@ $team_section = get_field('team_section');
     <?php }  ?>
     <?php if (!empty($assessment_section)) { ?>
         <section class="assessment-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2><?php echo $assessment_section['heading']; ?></h2>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <a href="<?php echo $assessment_section['button']['url']; ?>" class="theme-btn white-btn"><?php echo $assessment_section['button']['title']; ?></a>
-                    </div>
-                </div>
-            </div>
+            <?php echo do_shortcode('[assessment_data]'); ?>
         </section>
     <?php } ?>
 

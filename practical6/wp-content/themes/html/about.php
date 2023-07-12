@@ -51,20 +51,7 @@ $about_section = get_field('about_section');
     <?php } ?>
     <?php if (!empty($assessment_section)) { ?>
         <section class="assessment-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <?php if (isset($assessment_section['heading']) && !empty($assessment_section['heading'])) { ?>
-                            <h2><?php echo $assessment_section['heading']; ?></h2>
-                        <?php } ?>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <?php if (isset($assessment_section['heading']) && !empty($assessment_section['heading'])) { ?>
-                            <a href="<?php echo $assessment_section['button']['url']; ?>" class="theme-btn white-btn"><?php echo $assessment_section['button']['title']; ?></a>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
+            <?php echo do_shortcode('[assessment_data]'); ?>
         </section>
     <?php } ?>
 

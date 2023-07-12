@@ -3,12 +3,21 @@
 Template Name: contact
 */
 ?>
-<?php get_header(); ?>
+<?php
+
+get_header();
+
+$contact_us = get_field('contact_us');
+$assesment = get_field('assesment');
+
+?>
 <!--******************* Banner Section Start *********************-->
 <div class="home-banner">
-  <div class="banner" style="background: #5C5C5C url('images/home-slide1.jpg') no-repeat center center / cover;">
+  <div class="banner" style="background: #5C5C5C url('<?php if (isset($contact_us['image']) && !empty($contact_us['heading1'])) { ?><?php echo $contact_us['image']['url']; ?><?php } ?>') no-repeat center center / cover;">
     <div class="container">
-      <h1>contact us</h1>
+      <?php if (isset($contact_us['heading1']) && !empty($contact_us['heading1'])) { ?>
+        <h1><?php echo $contact_us['heading1']; ?></h1>
+      <?php } ?>
     </div>
   </div>
 </div>
@@ -24,35 +33,28 @@ Template Name: contact
       <div class="row">
         <div class="col-sm-6">
           <div class="contact-form">
-            <h3 class="blue-text">Message Us</h3>
+            <?php if (isset($contact_us['heading2']) && !empty($contact_us['heading2'])) { ?>
+              <h3 class="blue-text"><?php echo $contact_us['heading2']; ?></h3>
+            <?php } ?>
             <form action="#" method="post">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name">
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <input type="tel" class="form-control" placeholder="Phone">
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Submit" class="form-control button submit theme-btn">
-              </div>
+              <?php echo do_shortcode('[contact-form-7 id="241" title="contact"]'); ?>
             </form>
           </div>
         </div>
         <div class="col-sm-6 fill-mob">
           <div class="contact-info">
-            <h3 class="blue-text">Contact Info</h3>
-            <h4>Expatriat Assistance Services Inc. </h4>
-            <p>100 King Street West, Suite 5700 <br>Toronto, Ontario, M5X 1C7</p>
-            <p>Phone: <a href="tel:(647) 931 – 9768">(647) 931 – 9768</a><br>Email: <a href="mailto:dw@greenbankcapitalinc.com">dw@greenbankcapitalinc.com</a></p>
+            <?php if (isset($contact_us['heading3']) && !empty($contact_us['heading3'])) { ?>
+              <h3 class="blue-text"><?php echo $contact_us['heading3']; ?></h3>
+            <?php } ?>
+            <?php if (isset($contact_us['heading4']) && !empty($contact_us['heading4'])) { ?>
+              <h4><?php echo $contact_us['heading4']; ?> </h4>
+            <?php } ?>
+            <?php if (isset($contact_us['paragraph1']) && !empty($contact_us['paragraph1'])) { ?>
+              <?php echo $contact_us['paragraph1']; ?>
+            <?php } ?>
+            <?php if (isset($contact_us['paragraph2']) && !empty($contact_us['paragraph2'])) { ?>
+              <?php echo $contact_us['paragraph2']; ?>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -60,16 +62,7 @@ Template Name: contact
   </section>
   <section id="map"></section>
   <section class="assessment-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <h2>Get your free assessment done right now !</h2>
-        </div>
-        <div class="col-sm-6 text-right">
-          <a href="assessment.html" class="theme-btn white-btn">apply now</a>
-        </div>
-      </div>
-    </div>
+    <?php echo do_shortcode('[assessment_data]'); ?>
   </section>
 </main>
 <!--******************* Middle Section End ******************-->

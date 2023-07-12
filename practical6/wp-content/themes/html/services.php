@@ -21,20 +21,27 @@ Template Name: services
             <div class="row">
                 <div class="col-sm-4 col-md-3 service-sidebar">
                     <div class="panel-group" id="accordion">
+
+                        <!-- cat1 -->
+                        <?php foreach() {?>
                         <div class="panel">
                             <div>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Pre Arrival Services</a>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
                                 <ul class="nav nav-tabs">
+                                    <?php foreach() {?>
                                     <li><a data-toggle="tab" href="#service1" data-target="#service1" class="current">Immigration Services</a></li>
-                                    <li><a data-toggle="tab" href="#service2" data-target="#service2">Career Transition</a></li>
+                                    <?php }?> 
+                                    <!-- <li><a data-toggle="tab" href="#service2" data-target="#service2">Career Transition</a></li>
                                     <li><a data-toggle="tab" href="#service3" data-target="#service3">Temporary Accomodation</a></li>
-                                    <li><a data-toggle="tab" href="#service4" data-target="#service4">Financial Assistance</a></li>
+                                    <li><a data-toggle="tab" href="#service4" data-target="#service4">Financial Assistance</a></li> -->
                                 </ul>
                             </div>
                         </div>
-                        <div class="panel">
+                        <?php } ?>
+                        <!-- cat2 -->
+                        <!-- <div class="panel">
                             <div>
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Post Arrival Services</a>
                             </div>
@@ -46,7 +53,7 @@ Template Name: services
                                     <li><a data-toggle="tab" href="#service8" data-target="#service8">Family Care</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-sm-8 col-md-9 service-content">
@@ -122,16 +129,7 @@ Template Name: services
         </div>
     </section>
     <section class="assessment-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2>Get your free assessment done right now !</h2>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="#" class="theme-btn white-btn">apply now</a>
-                </div>
-            </div>
-        </div>
+        <?php echo do_shortcode('[assessment_data]'); ?>
     </section>
 </main>
 <!--******************* Middle Section End ******************-->

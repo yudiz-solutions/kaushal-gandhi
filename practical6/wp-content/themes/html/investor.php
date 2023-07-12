@@ -34,20 +34,7 @@ $buttton = get_field('$buttton');
         </div>
     </section>
     <section class="assessment-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <?php if (isset($heading_for_assessment_section) && !empty($heading_for_assessment_section)) { ?>
-                        <h2><?php echo $heading_for_assessment_section; ?></h2>
-                    <?php } ?>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <?php if (isset($buttton) && !empty($buttton)) { ?>
-                        <a href="<?php echo $buttton['url']; ?>" class="theme-btn white-btn"><?php echo $buttton['title']; ?></a>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
+        <?php echo do_shortcode('[assessment_data]'); ?>
     </section>
 </main>
 <!--******************* Middle Section End ******************-->

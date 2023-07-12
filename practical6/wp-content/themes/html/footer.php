@@ -15,7 +15,7 @@ $footer_acf = get_field('footer_acf', 'option');
                     <?php dynamic_sidebar('footer_logo'); ?>
                 <?php endif ?>
             </a>
-            <?php if (is_active_sidebar('footer_logo')) : ?>
+            <?php if (is_active_sidebar('footer_menu')) : ?>
                 <?php dynamic_sidebar('footer_menu'); ?>
             <?php endif ?>
 

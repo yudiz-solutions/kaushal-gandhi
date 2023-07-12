@@ -245,3 +245,31 @@ echo '</pre>';
 <?php
 get_footer();
 ?>
+
+
+
+
+jQuery (document ).ready(function() {
+var cuurrpage = 1;
+jQuery('#loadbutton').click(function(){
+
+data = {
+'action': 'post_loadmore_ajax',
+'page': cuurrpage+1
+};
+
+jQuery.ajax({
+url : kaushal.ajaxurl,
+data : data,
+type : 'POST',
+success : function( data ){
+if(data){
+
+jQuery(".ajax_loadmore").append(data);
+cuurrpage++;
+}
+
+}
+});
+});
+});

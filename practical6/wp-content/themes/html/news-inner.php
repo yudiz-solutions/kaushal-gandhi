@@ -167,16 +167,7 @@ Template Name: news-inner
         </div>
     </section>
     <section class="assessment-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2>Get your free assessment done right now !</h2>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="assessment.html" class="theme-btn white-btn">apply now</a>
-                </div>
-            </div>
-        </div>
+        <?php echo do_shortcode('[assessment_data]'); ?>
     </section>
 </main>
 <!--******************* Middle Section End ******************-->
