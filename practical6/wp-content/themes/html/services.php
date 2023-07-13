@@ -32,14 +32,24 @@ $services = get_field('services');
                         $arg = array(
                             'taxonomy' => 'services-category'
                         );
+                        $count = "1";
                         $cat_posts_loop = get_terms($arg);
                         foreach ($cat_posts_loop as  $cat) {
+                            $class_for_cat2 = "collapsed";
+                            $collapsed_in_class = "";
                         ?>
                             <div class="panel">
                                 <div>
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $cat->term_id; ?>"><?php echo $cat->name ?></a>
+                                    <?php
+                                    if ($count == "1") {
+                                        $class_for_cat2 = "";
+                                        $collapsed_in_class = "in";
+                                        $count = "0";
+                                    }
+                                    ?>
+                                    <a class="<?= $class_for_cat2; ?>" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $cat->term_id; ?>"><?php echo $cat->name ?></a>
                                 </div>
-                                <div id="collapse<?php echo $cat->term_id; ?>" class="panel-collapse collapse in">
+                                <div id="collapse<?php echo $cat->term_id; ?>" class="panel-collapse collapse <?= $collapsed_in_class; ?>">
                                     <ul class="nav nav-tabs">
                                         <?php
                                         $cat_posts_args = array(
@@ -49,7 +59,6 @@ $services = get_field('services');
                                                     'taxonomy' => 'services-category',
                                                     'field' => 'term_id',
                                                     'terms' => $cat->term_id
-
                                                 )
                                             )
                                         );
