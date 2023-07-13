@@ -107,8 +107,8 @@
                                     'order' => 'DESC'
                                 );
                                 $recommended_posts_loop = new WP_Query($recommended_posts_args);
-                                if ($recommended_posts_loop->have_posts()) :
-                                    while ($recommended_posts_loop->have_posts()) :
+                                if ($recommended_posts_loop->have_posts()) {
+                                    while ($recommended_posts_loop->have_posts()) {
                                         $recommended_posts_loop->the_post();
                                 ?>
                                         <div class="article-tab-item">
@@ -122,9 +122,11 @@
                                             <div class="clearfix"></div>
                                         </div>
                                 <?php
-                                    endwhile;
+                                        // endwhile;
+                                    }
                                     wp_reset_query();
-                                endif;
+                                    // endif;
+                                }
                                 ?>
                             </div>
                         </div>

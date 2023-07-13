@@ -193,9 +193,6 @@ function assessment_callback()
             </div>
         </div>
     <?php } ?>
-
-
-
 <?php
 
 }

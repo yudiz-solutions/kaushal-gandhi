@@ -35,7 +35,6 @@ get_header();
                 </div>
                 <div class="ajax_loadmore">
                     <?php
-
                     $args = array(
                         'post_type' => 'news',
                         'post_status' => 'publish',
@@ -43,19 +42,9 @@ get_header();
                         'paged' => 1,
                         'post__not_in' => array($featured_posts_id)
                     );
-
                     $news_list = new WP_Query($args);
-
-                    //$news_list = get_posts($args);
-
-
                     ?>
-                    <?php
-                    // echo '<pre>';
-                    // print_r($news_list);
-                    // echo '<pre>';
 
-                    ?>
                     <div class="row">
                         <?php
                         // echo "<pre>";

@@ -1,11 +1,5 @@
 <?php
 $footer_acf = get_field('footer_acf', 'option');
-
-
-// echo '<pre>';
-// print_r($footer_acf);
-// echo '</pre>';
-
 ?>
 <footer>
     <div class="footer-inner">
@@ -50,18 +44,7 @@ $footer_acf = get_field('footer_acf', 'option');
     </div>
 </footer>
 <!--******************* Footer Section End ******************-->
-
-
-
-
-<!-- Sticky Js Included -->
-<!-- <script type="text/javascript" src="js/sticky-kit.js"></script> -->
-
-
 <?php wp_footer(); ?>
-
-<!-- Sticky Js Included -->
-<!--*********************** All End ************************-->
 </body>
 
 </html>
