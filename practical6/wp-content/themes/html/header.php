@@ -27,7 +27,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <?php echo the_custom_logo(); ?>
-                    <a class="navbar-brand sticky-logo" href="<?php echo site_url(); ?>"><?php dynamic_sidebar('sticky_logo'); ?></a>
+                    <a class="navbar-brand sticky-logo" href="<?php echo site_url(); ?>"> <?php if (is_active_sidebar('sticky_logo')) : ?><?php dynamic_sidebar('sticky_logo'); ?><?php endif ?></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <?php

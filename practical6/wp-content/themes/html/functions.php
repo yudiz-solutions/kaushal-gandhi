@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 function wp_load_script()
 {
-    //////////////////////////////// CSS FIELS //////////////////////////////// 
+    //************************* CSS FIELS *************************\\ 
 
     wp_register_style('practial6-fontawesome', get_template_directory_uri() . '/assets/css/fontawesome.css');
     wp_enqueue_style('practial6-fontawesome');
@@ -24,7 +24,7 @@ function wp_load_script()
     wp_register_style('practial6-style', get_template_directory_uri() . '/assets/css/jcf.css');
     wp_enqueue_style('practial6-style');
 
-    //////////////////////////////// js FIELS //////////////////////////////// 
+    //*************************\\ js FIELS //*************************\\ 
 
     wp_register_script('practical6-jquery', get_template_directory_uri() . '/assets/js/lib/jquery.js', array(), '', true);
     wp_enqueue_script('practical6-jquery');
@@ -69,7 +69,7 @@ add_action('wp_enqueue_scripts', 'wp_load_script');
 
 function nav_menu()
 {
-    //////////////////////////////// Logo //////////////////////////////// 
+    //************************* Logo *************************\\ 
     $logo_width  = 300;
     $logo_height = 100;
 
@@ -83,19 +83,19 @@ function nav_menu()
             'unlink-homepage-logo' => true,
         )
     );
-    //////////////////////////////// Navbar //////////////////////////////// 
+    //************************* Navbar *************************\\ 
     register_nav_menus(array(
         'primary-menu' =>  __('Top Menu', 'practical6-html'),
     ));
 
 
-    //////////////////////////////// Feature Image //////////////////////////////// 
+    //************************* Feature Image *************************\\ 
 
     add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'nav_menu');
 
-//////////////////////////////// Image Support //////////////////////////////// 
+//************************* Image Support *************************\\
 function cc_mime_types($mimes)
 {
     $mimes['svg'] = 'image/svg+xml';
@@ -105,17 +105,17 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 
 
-//////////////////////////////// widget //////////////////////////////// 
+//************************* widget *************************\\ 
 
 function widgets()
 {
-    //////////////////////////// widget for header logo-2//////////////////////////////
+    //************************* widget for header logo-2 *************************\\
     register_sidebar(array(
         'name'          => __('sticky_logo', 'practical6-html'),
         'id'            => 'sticky_logo'
 
     ));
-    /////////////////////////// widgets for footer /////////////////////////////////
+    //************************* widgets for footer *************************\\
     register_sidebar(array(
         'name'          => __('footer logo', 'practical6-html'),
         'id'            => 'footer_logo'
@@ -143,7 +143,7 @@ add_action('widgets_init', 'widgets');
 
 
 
-//////////////////////////////// Theam setting Acf //////////////////////////////// 
+//************************* Theam setting Acf *************************\\ 
 
 
 function my_acf_op_init()
@@ -165,7 +165,7 @@ function my_acf_op_init()
 
 add_action('acf/init', 'my_acf_op_init');
 
-//////////////////////////////// Shortcode for Assessment Section //////////////////////////////// 
+//************************* Shortcode for Assessment Section *************************\\ 
 
 function assessment_callback()
 {
@@ -199,7 +199,7 @@ function assessment_callback()
 add_shortcode('assessment_data', 'assessment_callback');
 
 
-//////////////////////////////// Shortcode for news Section //////////////////////////////// 
+//************************* Shortcode for news Section *************************\\ 
 
 function news_callback()
 {
@@ -217,12 +217,12 @@ function news_callback()
 }
 add_shortcode('news_data', 'news_callback');
 
-//////////////////////////////// Custom Post Type //////////////////////////////// 
+//************************* Custom Post Type *************************\\ 
 
 function custom_post_type()
 {
 
-    //////////////////////////////// Custom Post Type for News ////////////////////////////////
+    //************************* Custom Post Type for News *************************\\
     $labels = array(
         'name'                => __('news', 'practical6-html'),
         'singular_name'       => __('news', 'practical6-html'),
@@ -272,7 +272,7 @@ function custom_post_type()
     // Registering your Custom Post Type
     register_post_type('news', $args);
 
-    /////////////////////////////////  register taxonomy Category for News ////////////////////////////////
+    //*************************  register taxonomy Category for News *************************\\
 
     $labels = array(
         'name'                       => __('Category', 'practical6-html'),
@@ -305,7 +305,7 @@ function custom_post_type()
 
     register_taxonomy('news-category', 'news', $args);
 
-    //////////////////////////////// Custom Post Type for services  ////////////////////////////////
+    //************************* Custom Post Type for services  *************************\\
     $labels = array(
         'name'                => __('services', 'practical6-html'),
         'singular_name'       => __('services', 'practical6-html'),
@@ -355,7 +355,7 @@ function custom_post_type()
     // Registering your Custom Post Type
     register_post_type('services', $args);
 
-    /////////////////////////////////  register taxonomy Category for services ////////////////////////////////
+    //*************************  register taxonomy Category for services *************************\\
 
     $labels = array(
         'name'                       => __('Category', 'practical6-html'),
@@ -393,7 +393,7 @@ function custom_post_type()
 add_action('init', 'custom_post_type', 0);
 
 
-//////////////////////////////// localize for loadmore-jquery //////////////////////////////// 
+//************************* localize for loadmore-jquery *************************\\ 
 
 
 function localize()
@@ -406,7 +406,7 @@ function localize()
 
 add_action('wp_enqueue_scripts', 'localize');
 
-//////////////////////////////// function for loadmore //////////////////////////////// 
+//************************* function for loadmore *************************\\ 
 
 function post_loadmore_ajax()
 {
@@ -454,10 +454,7 @@ function post_loadmore_ajax()
 }
 add_action('wp_ajax_post_loadmore_ajax', 'post_loadmore_ajax');
 add_action('wp_ajax_nopriv_post_loadmore_ajax', 'post_loadmore_ajax');
-
-
-
-//////////////////////////////// POPULAR  //////////////////////////////// 
+//************************* POPULAR  *************************\\ 
 function count_post_visits()
 {
     if (is_single()) {
@@ -468,9 +465,6 @@ function count_post_visits()
         } else {
             $views_no = intval($views);
             update_post_meta($post->ID, 'my_post_viewed', ++$views_no);
-            //   echo"<pre>";
-            //   print_r($views_no);
-            //   echo"</pre>";
         }
     }
 }

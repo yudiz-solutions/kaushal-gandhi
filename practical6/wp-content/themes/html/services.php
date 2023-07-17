@@ -36,6 +36,7 @@ $services = get_field('services');
                         $cat_posts_loop = get_terms($arg);
                         foreach ($cat_posts_loop as  $cat) {
                             $class_for_cat2 = "collapsed";
+                            // $curr_class = "";
                             $collapsed_in_class = "";
                         ?>
                             <div class="panel">
@@ -44,12 +45,13 @@ $services = get_field('services');
                                     if ($count == "1") {
                                         $class_for_cat2 = "";
                                         $collapsed_in_class = "in";
+                                        // $curr_class = "current";
                                         $count = "0";
                                     }
                                     ?>
                                     <a class="<?= $class_for_cat2; ?>" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $cat->term_id; ?>"><?php echo $cat->name ?></a>
                                 </div>
-                                <div id="collapse<?php echo $cat->term_id; ?>" class="panel-collapse collapse <?= $collapsed_in_class; ?>">
+                                <div id="collapse<?php echo $cat->term_id; ?>" class="panel-collapse collapse <?php echo $collapsed_in_class; ?>">
                                     <ul class="nav nav-tabs">
                                         <?php
                                         $cat_posts_args = array(
@@ -63,11 +65,21 @@ $services = get_field('services');
                                             )
                                         );
                                         $cat_posts_loop = new WP_Query($cat_posts_args);
+                                        $count2 = "1";
                                         if ($cat_posts_loop->have_posts()) {
                                             while ($cat_posts_loop->have_posts()) {
                                                 $cat_posts_loop->the_post();
+                                                $curr_class = "";
                                         ?>
-                                                <li><a data-toggle="tab" href="#service<?php echo get_the_ID(); ?>" data-target="#service<?php echo get_the_ID(); ?>" class="current"><?php echo get_the_title(); ?></a></li>
+                                                <?php
+                                                if ($count2 == "1") {
+                                                    // $class_for_cat2 = "";
+                                                    // $collapsed_in_class = "in";
+                                                    $curr_class = "current";
+                                                    $count2 = "0";
+                                                }
+                                                ?>
+                                                <li><a data-toggle="tab" href="#service<?php echo get_the_ID(); ?>" data-target="#service<?php echo get_the_ID(); ?>" class="<?php echo $curr_class ?>"><?php echo get_the_title(); ?></a></li>
                                         <?php
                                             }
                                         }
