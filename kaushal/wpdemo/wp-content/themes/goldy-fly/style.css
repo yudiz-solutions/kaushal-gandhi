@@ -1,0 +1,540 @@
+/*
+Theme Name: Goldy Fly
+Theme URI: https://www.inverstheme.com/theme/goldy-fly-pro/
+Author: inverstheme
+Author URI: https://www.inverstheme.com/
+Description: Goldy Fly is a clean, modern, user friendly, responsive and highly customizable WordPress Theme. you’ll easily find the design of this theme impressive and suitable for your Website. This Goldy Fly WordPress theme, carries an abundance of crucial features and functionalities. For instance, featured slider, featured Section, About Section, Our Portfolio, Our team Section, Testimonial Slider, Our Services, Our Sponsors, Sticky Header, Social Information, Sidebar, Excerpt Options, and many more. All of these highly customizable features and sections are completely responsive and absolutely easy to customize. 
+Template: goldy-mex
+Version: 1.0.5
+Tested up to: 6.1
+Requires PHP: 7.0
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: goldy-fly
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/*--------------------------------------------------------------
+# header
+--------------------------------------------------------------*/
+
+.main_site_header {
+    background-color: #18191b !important;
+    color: #ffffff;
+}
+.header_top_bar i {
+    color: #000000 !important;
+}
+.header_info ul.sub-menu li.current_page_item a {
+    color: #000;
+}
+.main_site_header.is-sticky-menu {
+	background-color: #18191b !important;
+}
+.main_site_header a {
+    color: #ffffff !important;
+}
+.main_site_header a:hover {
+    color: #ed8a63 !important;
+}
+header#masthead .current-menu-ancestor > a, header#masthead .current-menu-item > a, header#masthead .current_page_item > a {
+    color: #ed8a63 !important;
+}
+.social_icon i {
+    border-radius: 5% !important;
+}
+#primary-menu li>.sub-menu {
+	border-radius: 0px !important;
+}
+
+/*--------------------------------------------------------------
+# container
+--------------------------------------------------------------*/
+
+button::before, input[type="button"]::before, input[type="reset"]::before, input[type="submit"]::before, .wp-block-search .wp-block-search__button::before, .wp-block-search .wp-block-search__button::after, .nav-previous a::before, .nav-next a::before,
+.buttons::before, .buttons::after, .woocommerce a.button::before {
+    content: '';
+    position: absolute;
+    transform: scale(0) !important;
+    top: 0;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(6, 62, 49, 0.5);
+    z-index: -1;
+    width: 100% !important;
+    transform-origin: unset !important;
+}
+.buttons:hover:before, .wp-block-search .wp-block-search__button:hover:before, .wp-block-search .wp-block-search__button:focus-within:before {
+    transition: all .5s ease !important;
+    transform: scale(1) !important;
+}
+.buttons:hover:after, .wp-block-search .wp-block-search__button:hover:after, .wp-block-search .wp-block-search__button:focus-within:after {
+    transition: all .6s ease .2s !important;
+    transform: scale(1) !important;
+}
+.buttons:hover:before, .buttons:hover:after, .wp-block-search .wp-block-search__button:hover:before, .wp-block-search .wp-block-search__button:hover:after {
+	width: 100% !important;
+	height: 100% !important;
+}
+.blog_thumbnail_img img {
+    width: 100%;
+}
+
+
+/*--------------------------------------------------------------
+# Our Services Section
+--------------------------------------------------------------*/
+
+.widget_section_one {
+    background-color: #3eb8d7;
+    width: 33.3%;
+    border-radius: 0px !important;
+    position: relative;
+    top: 50px;
+}
+.widget_section_two {
+    background-color: #0392ce;
+    width: 33.3%;
+    border-radius: 0px !important;
+}
+.widget_section_three {
+    background-color: #3065b5;
+    width: 33.3%;
+    border-radius: 0px !important;
+    position: relative;
+    top: 50px;
+}
+
+/*--------------------------------------------------------------
+# featured slider
+--------------------------------------------------------------*/
+
+.featured_slider_disc {
+    width: 100% !important;
+    text-align: left;
+}
+
+.owl-item.active .entry-container {
+    opacity: 0.8 !important;
+    visibility: visible;
+    top: 0;
+    left: 18% !important;
+    z-index: 99999;
+    width: 50% !important;
+}
+.hentry-inner .entry-container {
+    display: flex;
+    opacity: 0;
+    position: relative;
+    visibility: hidden;
+    top: 150px;
+    transition: all 1s ease;
+    z-index: 9;
+    flex-direction: column;
+    align-items: flex-start !important;
+    background: rgb(0 0 0 / 79%) !important;
+    padding: 2em 3em !important;
+}
+
+/*--------------------------------------------------------------
+# featured section
+--------------------------------------------------------------*/
+
+.heading_main_title h2::after {
+    content: "";
+    width: 100px !important;
+    height: 2px;
+    display: block !important;
+    position: relative;
+    left: 0% !important;
+    margin: 15px auto;
+    background-color: #273641
+}
+.section-featured-wrep {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    z-index: 1;
+    border-radius: 30px !important;
+    margin-bottom: 0em !important;
+    transition: all 0.3s;
+}
+.section-featured-wrep .fea-brd {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    right: 8%;
+    bottom: 8%;
+    border: 1px dashed;
+    border-color: #301007;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+.featured-section .section-featured-wrep:hover .fea-brd {
+    top: 8%;
+    left: 8%;
+    right: 8%;
+    bottom: 8%;
+    transition: all 0.3s;
+    animation: spin 10s linear infinite;
+}
+.featured_content{
+    /*display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-bottom: 30px;
+    z-index: 1;
+    position: relative;*/
+    gap: 40px;
+}
+.featured-section_data .card-container {
+	filter: none !important;
+}
+.featured-section_data .featured_section_info .section-featured-wrep:hover i {
+	transform: rotateY(180deg);
+}
+.featured-section_data .featured_content .featured-thumbnail:after {
+    content: none !important;
+}
+.featured-section_data .featured_content .section-featured-wrep:hover i {
+    transition: all 1s ease 0s;
+}
+
+/*--------------------------------------------------------------
+# About Us Section
+--------------------------------------------------------------*/
+.about_data {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.about_section_container{
+    display: flex;
+    grid-template-columns: auto auto auto;
+    flex-direction: row-reverse;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 !important;
+}
+.about_featured_image{
+    transition: transform .4s;
+    width: 50% !important;
+    position: relative;
+    z-index: 2;
+}
+.about_container_data:before {
+	content: unset !important;
+}
+.about_section_container .about_container_data{
+    text-align: left;
+    width: 50%;
+    padding: 0 0 0px 6%;
+    align-items: flex-start;
+    flex-direction: column;
+    background: unset;
+    display: block;
+}
+.about_pic {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: unset !important;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+.about_section_info .about_pic img {
+    display: block;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 90px 0px 90px 0px;
+    height: auto !important;
+}
+.about_section_info .about_data .about_pic:hover img {
+	transform: inherit !important;
+    opacity: inherit;
+}
+
+/*--------------------------------------------------------------
+# our portfolio 
+--------------------------------------------------------------*/
+
+.our_port_containe .our_portfolio_title i {
+    color: #f6ad15;
+    font-size: 3px;
+    padding: 0px 20px;
+    background: #fe8423;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    position: relative;
+    transition: all 0.7s;
+    padding: 0px 50px !important;
+}
+.our_portfolio_info .our_portfolio_caption .our_portfolio_container:hover .our_portfolio_title i {
+    color: #fd6047;
+    background: #2d81f5;
+    transition: all 0.7s;
+/*    padding: 0px 50px;*/
+}
+.protfolio_images img {
+/*    transition: all 0.5s ease-out;*/
+    transform: scale(1);
+    transition: all 1s ease 0s;
+}
+.protfolio_images:before {
+    content: '';
+    background: repeating-linear-gradient(to right,#000,transparent 20px,#000 20px,#000 25px);
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transform: skewY(30deg);
+    position: absolute;
+    left: 0;
+    top: -100%;
+    z-index: 1;
+    transition: all 0.4s ease 0s;
+}
+.our_portfolio_container:hover .protfolio_images:before {
+    opacity: 0.4;
+    transform: skew(0);
+    top: 0;
+}
+
+
+/*--------------------------------------------------------------
+# our team
+--------------------------------------------------------------*/
+
+.our_team_icon_contain .our_teams_contain {
+    padding: 15px;
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    right: 7px;
+    width: calc(100% - 14px);
+    text-align: left;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.our_team_headline p {
+    margin: 5px 0 5px 0;
+}
+
+/*--------------------------------------------------------------
+# Our Testimonial
+--------------------------------------------------------------*/
+/*.image_testimonials img:hover {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    filter: contrast(70%);
+}*/
+.testinomial_description {
+    border: none !important;
+    filter: none !important;
+    background: #f4f4f4;
+    padding: 35px;
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 77% 100%, 0% 100%, 5% 50%, 0 0);
+}
+.our_testimonials_container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 20px;
+    flex-direction: column;
+}
+.testimonials_title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.image_testimonials img {
+/*    border-color: #e89e5b;*/
+    filter: none !important;
+    border-radius: 50%;
+}
+.our_testimonial_section .our_testimonial_info .testinomial_owl_slider .our_testimonial_data_info{
+    padding: 30px;
+    /*padding-right: 70px;
+    padding-left: 70px;*/
+}
+.our_testimonial_section .owl-nav button:before{
+    content: unset !important; 
+}
+.our_testimonial_section .testinomial_owl_slider .testimonials_title h3{        
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.our_testimonial_section .testinomial_owl_slider .testimonials_title h4{    
+    margin: 0 !important;
+    padding-left: 0px !important;
+    border-left: none !important;
+}
+.our_testimonial_section button.owl-prev {
+    left: 4% !important; 
+}
+.our_testimonial_section button.owl-next {
+    right: 4% !important;
+}
+
+/*--------------------------------------------------------------
+# book an appointment
+--------------------------------------------------------------*/
+
+.appointment_featured_image {
+    width: 58.33333333% !important;
+}
+.appointment_data {
+    display: flex;
+    background: #fff;
+    border-radius: 2.5em 2em 2em 2.5em;
+}
+.appointment_fields_data {
+    width: 41.66666667% !important;
+    padding: 0em 3em 0em 3em;
+    position: relative;
+    text-align: center;
+}
+.appointment_section_info {
+/*    padding: 40px 0px;*/
+    background: #f1f5fe;
+}
+.af_table_data .bookan_appoinment_button {
+    float: none;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.appointment_featured_image {
+    /*background-image:url('/assets/images/no-thumb.jpg');*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 170px;
+    border-radius: 2.5em;
+    box-shadow: 27px 1px 85px 5px #e5eafd;
+}
+.appointment_section_info {
+/*    padding: 4em 6em 4em 6em !important;*/
+}
+.af_table_data {
+    display: flex;
+    margin: auto;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+.af_input_fields {
+    padding-bottom: 8px;
+    width: 88%;
+    margin: 0 auto;
+}
+.af_table_data input ,.af_table_data textarea {
+    padding: 10px 15px;
+    margin: 0 0 21px 0;
+    height: 50px;
+    cursor: text;
+}
+.appointment_field .af_table_data .validation_error {
+	width: 50%;
+}
+
+/*--------------------------------------------------------------
+# footer
+--------------------------------------------------------------*/
+.main_footer {
+    background: unset !important;
+}
+footer#colophon{
+    text-align: center;
+    background-color: #202020 !important;
+    color: #ed9979 !important;
+}
+footer#colophon a:hover {
+    color: #ed8a63 !important;
+}
+footer#colophon a {
+    color: #c1c5ca !important;
+}
+.scrolling-btn {
+    background-color: #ed8a63 !important;
+}
+
+/*--------------------------------------------------------------
+# sidebar
+--------------------------------------------------------------*/
+aside.widget-area section h2, aside.widget-area section h1, aside.widget-area section h3, label.wp-block-search__label {
+    background-color: #202020 !important;
+    color: #ffffff !important;
+}
+
+@media only screen and (max-width: 768px) {
+   
+    .menu_call_button .main-navigation ul.sub-menu {
+        background-color: #b57258;
+    }
+    .hentry-inner {
+        height: 330px !important;
+        padding: 0px 58px !important;
+        clip-path: unset;
+        justify-content: center !important;
+    }
+    .featured_slider_image .hentry-inner .entry-container {
+        text-align: center;
+        margin: 0 0 0 0 !important;
+        width: 100% !important;
+        align-items: center !important;
+        left: 0 !important;
+    }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* # our services
+    --------------------------------------------------------------*/
+
+    .widget_section_one, .widget_section_two, .widget_section_three {
+        width: 100%;
+        top: 0px;
+    }
+
+    /* # book an appointment
+    --------------------------------------------------------------*/
+    .appoinment_section_data {
+        padding: 0px;
+        text-align: center;
+    }
+    .services_section_info {
+        padding-bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .appointment_data {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+    .appointment_fields_data {
+        width: 100%;
+        padding: 0;
+    }
+    .appointment_featured_image {
+        min-height: 300px;
+        width: 77.333333%;
+    }
+}
+
+
+/* Activate css */
+.main_helthicon span.section_helth_main:after, .main_helthicon span.section_helth_main:before {
+    content: "";
+    border-bottom: 0;
+    display: block;
+    flex-grow: 1;
+    border-top: 2px solid;
+}

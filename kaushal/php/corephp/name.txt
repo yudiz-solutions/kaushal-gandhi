@@ -1,0 +1,16 @@
+data base name :- core_php
+
+ID
+First_name
+Last_name
+User_name
+Email
+Password
+Gender
+Country
+State
+City
+Bio
+Profile
+Active_social_media
+

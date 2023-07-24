@@ -1,0 +1,104 @@
+1. SELECT first_name,last_name FROM `customers`
+
+2. SELECT name FROM `products`
+
+3. SELECT * FROM `orders`
+
+4. SELECT order_id,product_id,quantity,price  FROM `order_items` 
+
+5. SELECT * FROM `customers` WHERE customer_id = 1
+
+6. SELECT * FROM `products` WHERE product_id = 2
+
+7. SELECT * FROM `orders` WHERE order_id = 3
+
+8. SELECT * FROM `order_items` WHERE order_id = 1 & product_id = 1
+
+9. SELECT COUNT(*) FROM `customers`
+
+10.SELECT COUNT(*)FROM `products`
+
+11.SELECT COUNT(*)FROM `orders`
+
+12.SELECT COUNT(*)FROM `order_items`
+
+13.SELECT AVG(price) FROM `products`
+
+15.SELECT MIN(price) FROM `products`
+
+16.SELECT SUM(inventory) FROM `products`
+
+17.SELECT * FROM `orders` WHERE customer_id=2
+
+18.SELECT * FROM `order_items` WHERE order_id = 4
+
+19.SELECT SUM(total) FROM `orders` WHERE customer_id=1
+
+20.SELECT SUM(quantity) FROM `order_items` WHERE order_id = 2
+
+21.SELECT MAX(price),name FROM `products`
+
+22.SELECT customers.customer_id, customers.first_name, customers.last_name, SUM(orders.total) AS total_sum FROM customers JOIN orders ON customers.customer_id = orders.customer_id GROUP BY orders.customer_id;  
+
+23.SELECT customer_id,first_name,last_name ,MAX(quantity) FROM order_items,customers;
+
+24.SELECT MAX(inventory),name FROM `products`
+
+25.SELECT MAX(total),customer_id FROM `orders`
+
+26.SELECT SUM(total),order_date FROM `orders`
+
+27.SELECT order_id,customer_id,order_date,SUM(total)  FROM orders GROUP BY order_date;
+
+28.SELECT AVG(total) FROM `orders`
+
+29.SELECT AVG(price) FROM `products` WHERE inventory>50;
+
+30.SELECT order_date,COUNT(quantity) FROM order_items,orders GROUP BY order_date;
+
+31.SELECT HOUR(order_date) AS hour_of_day, COUNT(*)  FROM orders GROUP BY hour_of_day;
+
+32.SELECT DAY(order_date), COUNT(quantity) FROM order_items, orders GROUP BY order_date
+
+33.SELECT customers.customer_id , customers.first_name , customers.last_name , orders.   total FROM customers JOIN orders ON customers.customer_id = orders.customer_id ORDER BY  orders.total DESC LIMIT 5
+
+34.SELECT order_id , product_id , quantity , price FROM order_items ORDER BY price DESC LIMIT 5
+
+35.SELECT * FROM customers, order_items WHERE ISNULL(quantity)
+
+36.SELECT * FROM products, order_items WHERE ISNULL(name)
+
+37.SELECT customers.customer_id , customers.first_name , customers.last_name , orders.customer_id FROM customers JOIN orders on customers.customer_id = orders.customer_id HAVING COUNT(orders.customer_id) >= 2;
+
+38.SELECT * FROM products WHERE price BETWEEN 10 AND 20
+
+39. SELECT order_id, order_date FROM `orders` WHERE MONTH(order_date)=1 ORDER BY order_id ASC
+
+40.SELECT order_id, order_date FROM orders WHERE DATE(order_date) = "2022-01-02"
+
+41.SELECT customer_id, order_id, order_date FROM `orders` WHERE customer_id = 1 
+
+42.SELECT customer_id, order_id, order_date FROM `orders` WHERE customer_id = 1  ORDER BY order_date ASC
+
+43.SELECT product_id, name, description FROM products WHERE product_id IN ( SELECT product_id FROM order_items ) ORDER BY name
+
+44.SELECT * FROM `customers` WHERE state = 'CA' OR state = 'TX'
+
+45.SELECT order_id, customer_id, order_date,total 
+FROM orders 
+WHERE order_date >= '2022-01-01' AND total > 20;
+
+46.SELECT * FROM products WHERE inventory < 10
+
+47.SELECT customers.customer_id, customers.first_name, customers.last_name, SUM(orders.total) AS TOTAL_SPENT FROM customers JOIN orders ON  customers.customer_id = orders.customer_id GROUP BY customer_id ORDER BY TOTAL_SPENT DESC
+
+48.SELECT * FROM customers WHERE email LIKE '%example.com'
+
+49.SELECT * FROM customers WHERE state = 'NY'
+
+50. SELECT order_items.order_id, order_items.product_id, products.name , SUM(order_items.price) AS Revenue FROM order_items JOIN products ON order_items.product_id = products.product_id ORDER BY Revenue DESC;
+
+
+
+
+
