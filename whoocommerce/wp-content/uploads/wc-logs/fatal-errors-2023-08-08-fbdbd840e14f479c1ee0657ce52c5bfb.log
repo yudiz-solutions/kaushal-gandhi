@@ -1,0 +1,12 @@
+2023-08-08T04:37:00+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 53248 bytes) in /Applications/MAMP/htdocs/git/whoocommerce/wp-content/plugins/auxin-elements/includes/elementor/widgets/custom-list.php on line 1112
+
+2023-08-08T04:37:13+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 32768 bytes) in /Applications/MAMP/htdocs/git/whoocommerce/wp-admin/includes/ajax-actions.php on line 3694
+
+2023-08-08T04:38:11+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 32768 bytes) in /Applications/MAMP/htdocs/git/whoocommerce/wp-content/plugins/auxin-elements/includes/elementor/widgets/contact-form.php on line 1459
+
+2023-08-08T04:39:25+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 221184 bytes) in /Applications/MAMP/htdocs/git/whoocommerce/wp-includes/class-wpdb.php on line 2431
+
+2023-08-08T04:39:40+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 221184 bytes) in /Applications/MAMP/htdocs/git/whoocommerce/wp-includes/class-wpdb.php on line 2431
+
+2023-08-08T04:43:39+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 32768 bytes) in /Applications/MAMP/htdocs/git/whoocommerce/wp-admin/includes/ajax-actions.php on line 3833
+
