@@ -1,5 +1,7 @@
 <?php
 
+use function DeliciousBrains\WPMDB\Container\DI\value;
+
 /**
  * Create a new table class that will extend the WP_List_Table
  */
@@ -34,17 +36,19 @@ class event_List extends WP_List_Table
         $perPage = 5;
         $currentPage = $this->get_pagenum();
         $totalItems = count($data);
-
+        $search = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';
         $this->set_pagination_args(array(
             'total_items' => $totalItems,
-            'per_page'    => $perPage
+            'per_page'    => $perPage,
+            's' => $search, // Add the search parameter to the query
         ));
 
         $data = array_slice($data, (($currentPage - 1) * $perPage), $perPage);
 
         $this->_column_headers = array($columns, $hidden, $sortable);
         $this->items = $data;
-        $this->process_bulk_action();
+        // $this->process_bulk_action();
+        // $this->extra_tablenav();
     }
 
     /**
@@ -97,10 +101,18 @@ class event_List extends WP_List_Table
     {
         $data = array();
 
+        $search_value = isset($_REQUEST['s']) ? esc_attr($_REQUEST['s']) : '';
+        // echo '<pre>';
+        // print_r($search_item);
+        // echo '</pre>';
+
         $args = array(
             'post_type' => 'event',
-            'post_status' => 'publish'
+            'post_status' => 'publish',
+            's' => $search_value
         );
+
+
         $event_list = new WP_Query($args);
         if ($event_list->have_posts()) {
             while ($event_list->have_posts()) {
@@ -165,8 +177,6 @@ class event_List extends WP_List_Table
         if (!empty($_GET['order'])) {
             $order = $_GET['order'];
         }
-
-
         $result = strcmp($a[$orderby], $b[$orderby]);
 
         if ($order === 'asc') {
@@ -178,12 +188,20 @@ class event_List extends WP_List_Table
     function column_id($item)
     {
         $actions = array(
-            'edit'      => sprintf('<a href="?page=%s&action=%s&element=%s">' . __('Edit', 'twentytwentyonechild') . '</a>', $_REQUEST['page'], 'edit', $item['id']),
-            'delete'    => sprintf('<a href="?page=%s&action=%s&element=%s">' . __('delete', 'twentytwentyonechild') . '</a>', $_REQUEST['page'], 'delete', $item['id'])
+            'edit'      => sprintf('<a href="?page=%s&action=%s&element=%s&pages=event">' . __('Edit', 'event-managment') . '</a>', $_REQUEST['page'], 'edit', $item['id']),
+            'delete'    => sprintf('<a href="?page=%s&action=%s&element[]=%s">' . __('delete', 'event-managment') . '</a>', $_REQUEST['page'], 'delete', $item['id'])
         );
 
         return sprintf('%1$s %2$s', $item['id'], $this->row_actions($actions));
     }
+    public function column_cb($item)
+    {
+        return sprintf(
+            '<input type="checkbox" name="delete[]" value="%s" />',
+            $item['id']
+        );
+    }
+
     public function get_bulk_actions()
     {
 
@@ -192,23 +210,21 @@ class event_List extends WP_List_Table
             // 'save'   => __('Save', 'event-managment'),
         );
     }
-    public function process_bulk_action()
+    public function extra_tablenav($which)
     {
-        $click = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
-        if ($click == 'delete') {
-
-            wp_delete_post($_REQUEST['element']);
-            // wp_redirect(home_url('/render-form/'));
+        if ($which === 'top') {
+            $search_value = isset($_REQUEST['s']) ? esc_attr($_REQUEST['s']) : '';
+            echo '<div class="alignleft actions">
+                <label for="event-search" class="screen-reader-text">' . __('Search Events') . '</label>
+                <input type="search" id="event-search" name="s" value="' . $search_value . '"/>
+                <input type="submit" name="search_item" id="" class="button" value="' . __('Search Events') . '">
+            </div>';
         }
-    }
-
-    public function column_cb($item)
-    {
-        return sprintf(
-            '<input type="checkbox" />',
-            $item['id']
-        );
+        // echo '<pre>';
+        // print_r($search_value);
+        // echo '</pre>';
+        // die;
     }
 }
 
@@ -216,8 +232,11 @@ $exampleListTable = new event_List();
 $exampleListTable->prepare_items();
 ?>
 <div class="wrap">
-    <div id="icon-users" class="icon32"></div>
-    <h2>Example List Table Page</h2>
-    <?php $exampleListTable->display(); ?>
+    <form method="get">
+        <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+
+        <div id="icon-users" class="icon32"></div>
+        <h2>Example List Table Page</h2>
+        <?php $exampleListTable->display(); ?>
+    </form>
 </div>
-<?php

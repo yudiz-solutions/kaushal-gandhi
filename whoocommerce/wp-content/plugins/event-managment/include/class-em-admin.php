@@ -8,6 +8,10 @@ class Em_Admin
     {
         add_action('init', array($this, 'em_register_event_post_type'));
         add_action('admin_menu', array($this, 'em_register_event_menu'));
+        add_action('admin_init', array($this, 'em_register_delete_bulk'));
+        add_action('admin_init', array($this, 'em_register_delete'));
+        add_action('admin_init', array($this, 'em_register_edit'));
+
         // add_action('init', array($this, 'em_register_event_redirect', 99));
     }
 
@@ -82,9 +86,91 @@ class Em_Admin
         require_once WPEMS_DIR . '/include/admin/class-em-event-list.php';
     }
 
-    //     public function em_register_event_redirect()
-    //     {
+    public function wpesm_admin_bulk_delete()
+    {
 
-    //         wp_redirect(home_url('/thank-you/'));
-    //     }
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'wpems_email_log';
+
+        if (
+            isset($_GET['action']) && $_GET['action'] == 'delete'   &&
+            isset($_GET['page'])      && $_GET['page'] == 'easy-smtp-email-log'
+        ) { //check action and page
+
+            // Get redirect url
+            $redirect_url = add_query_arg(array('page' => 'easy-smtp-email-log'), admin_url('admin.php'));
+
+            //get bulk product array from $_GET
+            $log_ids = isset($_GET['log_id']) ? $_GET['log_id'] : array();
+
+            if (count($log_ids) > 0) { //check there is some checkboxes are checked or not 
+
+                //if there is multiple checkboxes are checked then call delete in loop
+                foreach ($log_ids as $log_id) {
+                    $wpdb->delete($table_name, array('id' => $log_id));
+                }
+
+                $redirect_url = add_query_arg(array('message' => '3'), $redirect_url);
+
+                //if bulk delete is performed successfully then redirect 
+                wp_redirect($redirect_url);
+                die();
+            } else {
+                wp_redirect($redirect_url);
+                die();
+            }
+        }
+    }
+
+    public function em_register_delete_bulk()
+    {
+
+        if (isset($_REQUEST['delete'])) {
+            $click = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+
+            if ($click == 'delete') {
+                // echo '<pre>';
+                // print_r($_REQUEST);
+                // echo '</pre>';
+                // die;
+                foreach ($_REQUEST['delete'] as $key) {
+                    wp_delete_post($key);
+                }
+            }
+        }
+    }
+    public function em_register_delete()
+    {
+        if (isset($_REQUEST['element'])) {
+            $click = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+
+            if ($click == 'delete') {
+                // echo '<pre>';
+                // print_r($_REQUEST);
+                // echo '</pre>';
+                // die;
+                foreach ($_REQUEST['element'] as $key2) {
+                    wp_delete_post($key2);
+                }
+            }
+        }
+    }
+    public function em_register_edit()
+    {
+        $pages = isset($_REQUEST['pages']) ? $_REQUEST['pages'] : '';
+        $element_e = isset($_REQUEST['element']) ? $_REQUEST['element'] : '';
+        $url = 'post.php?post=' . $element_e . '&action=edit';
+
+        // echo '<pre>';
+        // print_r($url);
+        // echo '</pre>';
+        // die;
+
+
+        if ($pages == 'event') {
+            wp_redirect(admin_url($url));
+            exit;
+        }
+    }
 }
